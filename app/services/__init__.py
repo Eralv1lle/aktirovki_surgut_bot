@@ -1,0 +1,1 @@
+from .actirovka_parser import get_actirovka_info
