@@ -13,4 +13,4 @@ actirovka_router = Router()
     )
 )
 async def start(message: Message):
-    await message.answer(get_actirovka_info(), disable_web_page_preview=True, parse_mode="HTML")
+    await message.answer(await get_actirovka_info(), disable_web_page_preview=True, parse_mode="HTML")

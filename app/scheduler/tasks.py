@@ -6,10 +6,10 @@ from config import config
 
 
 async def send_actirovka(bot: Bot):
-    text = get_actirovka_info()
+    text = await get_actirovka_info()
 
     for chat_id in config.CHAT_IDS:
         try:
-            await bot.send_message(chat_id, text, parse_mode=ParseMode.HTML)
+            await bot.send_message(chat_id, text, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
         except Exception:
             pass

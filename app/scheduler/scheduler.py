@@ -14,8 +14,8 @@ def setup_scheduler(bot: Bot):
         send_actirovka,
         CronTrigger(
             day_of_week="mon-sat",
-            hour=20,
-            minute=44
+            hour=6,
+            minute=30
         ),
         kwargs={"bot": bot},
         id="daily_actirovka_message",
