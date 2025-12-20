@@ -1,13 +1,13 @@
 from aiogram import Bot
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
-from datetime import timezone
+from pytz import timezone
 
 from config import config
 from app.scheduler.tasks import send_actirovka
 
 
-scheduler = AsyncIOScheduler(timezone=config.TIMEZONE)
+scheduler = AsyncIOScheduler(timezone=timezone(config.TIMEZONE))
 
 def setup_scheduler(bot: Bot):
     scheduler.add_job(
