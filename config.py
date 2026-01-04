@@ -1,9 +1,8 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from typing import List
+
 
 class Config(BaseSettings):
     BOT_TOKEN: str
-    CHAT_IDS: List[int]
     TIMEZONE: str = "Europe/Moscow"
 
     model_config = SettingsConfigDict(

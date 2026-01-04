@@ -1,1 +1,2 @@
 from .actirovka_parser import get_actirovka_info
+from .newsletter import get_chats_for_shift

@@ -17,8 +17,27 @@ def setup_scheduler(bot: Bot):
             hour=6,
             minute=30
         ),
-        kwargs={"bot": bot},
-        id="daily_actirovka_message",
-        replace_existing=True
+        kwargs={"shift": 1, "bot": bot},
+        id="morning_actirovka_message",
+        replace_existing=True,
+        misfire_grace_time=300,
+        coalesce=True,
+        max_instances=1
     )
-    scheduler.start()
+    scheduler.add_job(
+        send_actirovka,
+        CronTrigger(
+            day_of_week="mon-sat",
+            hour=12,
+            minute=0
+        ),
+        kwargs={"shift": 2, "bot": bot},
+        id="day_actirovka_message",
+        replace_existing=True,
+        misfire_grace_time=300,
+        coalesce=True,
+        max_instances=1
+    )
+
+    if not scheduler.running:
+        scheduler.start()
